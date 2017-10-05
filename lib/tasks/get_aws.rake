@@ -40,8 +40,8 @@ task :get_aws_urls => :environment do
       # Check a range of 60 seconds to see which url works
       byebug
       (0..60).each do |n|
-        break if get_response_code(new_url_without_filename + n.to_s + '/' + filename) == 200
-        full_url_with_working_parameters = new_url_without_filename + n.to_s + '/' + filename
+        break if get_response_code(new_url_without_filename + sprintf('%02d', n) + '/' + filename) == 200
+        full_url_with_working_parameters = new_url_without_filename + sprintf('%02d', n) + '/' + filename
         puts full_url_with_working_parameters
       end
       byebug
